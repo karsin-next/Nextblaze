@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>NextBlaze Asia | Technology Commercialization & Venture Building</title>
+    <meta name="description" content="NextBlaze Asia helps deep tech startups scale across Asia. Based on real impact: 60.8M value, 12 markets, 37 ventures. Free report inside.">
+    <!-- favicon -->
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <!-- modern font Inter (premium) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --deep-navy: #022f42;      /* logo background */
+            --gold: #ffd800;            /* logo accent */
+            --pure-white: #ffffff;
+            --off-white: #f2f6fa;       /* very light blue-white, no grey */
+            --text-dark: #022f42;
+            --text-medium: #1e4a62;
+            --border-light: rgba(2, 47, 66, 0.12);
+            --shadow-card: 0 25px 45px -15px rgba(2, 47, 66, 0.15);
+            --shadow-hover: 0 35px 55px -18px rgba(255, 216, 0, 0.25);
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--off-white);
+            color: var(--text-dark);
+            line-height: 1.5;
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ----- sticky header (deep navy, gold border) ----- */
+        .sticky-header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background-color: var(--deep-navy);
+            padding: 0.7rem 2rem;
+            border-bottom: 3px solid var(--gold);
+        }
+        .nav-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .logo img {
+            height: 80px;          /* enlarged logo */
+            width: auto;
+            display: block;
+        }
+        /* fallback text logo style (when image fails) */
+        .logo span.fallback-logo {
+            color: white;
+            font-weight: 700;
+            font-size: 2.2rem;
+        }
+        .logo span.fallback-logo span {
+            color: var(--gold);
+        }
+        .nav-links {
+            display: flex;
+            gap: 2.8rem;
+            align-items: center;
+        }
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            color: rgba(255,255,255,0.9);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            transition: var(--transition);
+            border-bottom: 2px solid transparent;
+            padding-bottom: 0.2rem;
+        }
+        .nav-links a:hover {
+            color: var(--gold);
+            border-bottom-color: var(--gold);
+        }
+        .btn-outline-light {
+            background: transparent;
+            border: 2px solid var(--gold);
+            color: var(--gold);
+            padding: 0.5rem 2rem;
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: var(--transition);
+            display: inline-block;
+        }
+        .btn-outline-light:hover {
+            background: var(--gold);
+            color: var(--deep-navy);  /* deep navy font on hover */
+        }
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 2.5rem;
+            cursor: pointer;
+            color: var(--gold);
+        }
+        @media (max-width: 900px) {
+            .sticky-header { padding: 0.7rem 1.5rem; }
+            .logo img { height: 60px; }
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 85px;
+                left: 0;
+                width: 100%;
+                background: var(--deep-navy);
+                flex-direction: column;
+                gap: 0;
+                padding: 2rem 0;
+                border-top: 2px solid var(--gold);
+            }
+            .nav-links.show { display: flex; }
+            .nav-links a { padding: 1rem 2rem; border-bottom: 1px solid rgba(255,216,0,0.2); }
+            .menu-toggle { display: block; }
+        }
+
+        /* containers - reduced spacing */
+        .container { max-width: 1280px; margin: 0 auto; padding: 3rem 2rem; }
+        @media (max-width:640px){ .container{ padding:2rem 1.5rem; } }
+
+        h1, h2, h3 { font-weight: 700; line-height: 1.2; color: var(--deep-navy); }
+        h1 { font-size: clamp(3rem,7vw,4.8rem); letter-spacing: -0.02em; }
+        h2 { font-size: 3rem; margin-bottom: 1.5rem; }
+        h2:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--gold);
+            margin-top: 0.8rem;
+        }
+        .section-subhead { font-size: 1.25rem; color: var(--text-medium); max-width: 800px; margin-bottom: 2rem; }
+
+        /* hero with video */
+        .hero-video {
+            width: 100%;
+            height: auto;
+            max-height: 500px;
+            object-fit: cover;
+            border-radius: 0;
+            box-shadow: var(--shadow-card);
+            border: 2px solid var(--gold);
+        }
+        .hero-badge {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--deep-navy);
+            font-weight: 700;
+            padding: 0.3rem 1.2rem;
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.1em;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+        }
+
+        /* stats strip */
+        .stats-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3rem;
+            background: var(--pure-white);
+            padding: 2.5rem 3rem;
+            box-shadow: var(--shadow-card);
+            margin: 2rem 0;
+            border-left: 6px solid var(--gold);
+        }
+        .stat-item { flex: 1 1 140px; }
+        .stat-number { font-size: 3.2rem; font-weight: 600; color: var(--deep-navy); line-height: 1; }
+        .stat-label { color: var(--text-medium); text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.06em; }
+
+        /* case study cards - anonymized detailed profiles */
+        .case-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        .case-card {
+            background: var(--pure-white);
+            padding: 2rem 2rem 2.5rem;
+            box-shadow: var(--shadow-card);
+            border-bottom: 4px solid transparent;
+            transition: var(--transition);
+        }
+        .case-card:hover {
+            border-bottom-color: var(--gold);
+            box-shadow: var(--shadow-hover);
+        }
+        .case-card h4 { font-size: 1.6rem; margin-bottom: 0.8rem; color: var(--deep-navy); }
+        .case-card .company-type {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--gold);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        .case-card .description {
+            color: var(--text-medium);
+            margin: 1rem 0;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        .case-card .fact {
+            font-weight: 600;
+            color: var(--deep-navy);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border-top: 1px solid var(--border-light);
+            padding-top: 1rem;
+            margin-top: 1rem;
+        }
+
+        /* framework grid for 12 topics */
+        .framework-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .framework-card {
+            background: var(--pure-white);
+            padding: 2rem 1.8rem;
+            box-shadow: var(--shadow-card);
+            border-left: 4px solid var(--gold);
+        }
+        .framework-card h4 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--deep-navy);
+        }
+        .framework-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .framework-card li {
+            font-size: 0.95rem;
+            color: var(--text-medium);
+            margin-bottom: 0.5rem;
+            padding-left: 1.2rem;
+            position: relative;
+        }
+        .framework-card li::before {
+            content: "▹";
+            color: var(--gold);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        /* lead magnet */
+        .lead-magnet {
+            background: var(--deep-navy);
+            color: white;
+            padding: 3rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            align-items: center;
+            margin: 2rem 0;
+        }
+        .lead-magnet-content { flex: 1 1 300px; }
+        .lead-magnet h3 { color: var(--gold); font-size: 2.2rem; margin-bottom: 1rem; }
+        .lead-form {
+            flex: 1 1 300px;
+            background: white;
+            padding: 2rem;
+        }
+        .lead-form input, .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 1rem;
+            margin-bottom: 1.2rem;
+            border: 1px solid var(--border-light);
+            font-family: var(--font-sans);
+            background: var(--off-white);
+            border-bottom: 3px solid transparent;
+        }
+        .lead-form input:focus, .contact-form input:focus, .contact-form textarea:focus {
+            outline: none;
+            border-bottom-color: var(--gold);
+        }
+        .btn-gold {
+            background: var(--gold);
+            color: var(--deep-navy);
+            border: none;
+            padding: 1rem 2rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            width: 100%;
+            cursor: pointer;
+            transition: var(--transition);
+            border: 2px solid var(--gold);
+        }
+        .btn-gold:hover { background: transparent; color: var(--gold); }
+
+        .btn-primary {
+            background: var(--deep-navy);
+            color: white;
+            border: 2px solid var(--deep-navy);
+            padding: 1.1rem 3rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            text-decoration: none;
+            display: inline-block;
+            transition: var(--transition);
+        }
+        .btn-primary:hover { background: transparent; color: var(--deep-navy); }
+
+        /* contact form specific */
+        .contact-form {
+            background: var(--pure-white);
+            padding: 2rem;
+            box-shadow: var(--shadow-card);
+        }
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 0;
+        }
+
+        .footer {
+            background: var(--deep-navy);
+            color: #b0d0e0;
+            padding: 3rem 2rem 2rem;
+            border-top: 3px solid var(--gold);
+        }
+        .footer-inner { max-width: 1280px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 3rem; }
+        .footer-copyright { text-align: center; margin-top: 2rem; padding-top: 2rem; border-top: 1px solid #1b4f68; }
+
+        hr { border: 0; border-top: 1px solid var(--border-light); margin: 2rem 0; }
+    </style>
+</head>
+<body>
+    <header class="sticky-header">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="http://www.nextblaze.asia/7yellow2bluebg.png" alt="NextBlaze Asia" onerror="this.onerror=null; this.style.display='none'; this.parentElement.innerHTML='<span class=\'fallback-logo\'>NextBlaze<span>Asia</span></span>';">
+            </div>
+            <button class="menu-toggle" id="menuToggle">☰</button>
+            <nav class="nav-links" id="navLinks">
+                <a href="#home">Home</a>
+                <a href="#impact">Impact</a>
+                <a href="#cases">Innovators</a>
+                <a href="#framework">Framework</a>
+                <a href="#report">Free report</a>
+                <a href="https://calendar.app.google/o4nL2doPBcnSne6v8" class="btn-outline-light" target="_blank">Book consult</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- HERO with video -->
+        <section id="home" class="container" style="padding-top: 2rem;">
+            <div class="hero-badge">TECHNOLOGY COMMERCIALIZATION IN ASIA</div>
+            <div style="display: flex; flex-wrap: wrap; gap: 3rem; align-items: center;">
+                <div style="flex:1 1 400px;">
+                    <h1>Scale your deep tech across Asia</h1>
+                    <p style="font-size:1.3rem; color:var(--text-medium); margin:1.5rem 0;">We turn deep tech into cross‑border success — backed by <strong>RM 60.8M value</strong> created and <strong>37 portfolio ventures</strong>.</p>
+                    <a href="#report" class="btn-primary" style="margin-right:1rem;">GET FREE REPORT</a>
+                    <a href="https://calendar.app.google/o4nL2doPBcnSne6v8" class="btn-primary" style="background:transparent; color:var(--deep-navy);" target="_blank">Book consultation</a>
+                </div>
+                <div style="flex:1 1 400px;">
+                    <video class="hero-video" controls poster="https://placehold.co/800x450/022f42/ffd800?text=NextBlaze+Asia">
+                        <source src="http://www.nextblaze.asia/Make-an-impact-with-energy-efficiency.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+        </section>
+
+        <!-- IMPACT SNAPSHOT -->
+        <section id="impact" class="container">
+            <h2>Impact snapshot</h2>
+            <div class="stats-row">
+                <div class="stat-item"><div class="stat-number">RM 60.8M</div><div class="stat-label">Value creation</div></div>
+                <div class="stat-item"><div class="stat-number">12</div><div class="stat-label">International markets</div></div>
+                <div class="stat-item"><div class="stat-number">118</div><div class="stat-label">Innovators facilitated overseas</div></div>
+                <div class="stat-item"><div class="stat-number">25</div><div class="stat-label">Global companies landed</div></div>
+            </div>
+            <div style="display:flex; flex-wrap:wrap; gap:2rem; justify-content:space-between; background:var(--pure-white); padding:2rem 3rem; box-shadow:var(--shadow-card); margin-top:1rem;">
+                <span><strong>155</strong> international innovators</span>
+                <span><strong>16</strong> expansion programmes</span>
+                <span><strong>9</strong> Asian markets</span>
+            </div>
+        </section>
+
+        <!-- INNOVATOR CASE STUDIES (anonymized, detailed profiles) -->
+        <section id="cases" class="container">
+            <h2>Innovators we accelerated</h2>
+            <p class="section-subhead">Real stories from agritech, robotics, SaaS — across Asia and beyond.</p>
+            <div class="case-grid">
+                <div class="case-card">
+                    <div class="company-type">AgriTech / Carbon Capture</div>
+                    <h4>Carbon-negative microalgae startup</h4>
+                    <div class="description">Developed proprietary microalgae cultivation systems that transform organic waste into regenerative soil inputs. Scaled from lab to 700+ tanks, now operating across West Malaysia. Gold Medal winner at national innovation expo.</div>
+                    <div class="fact">700+ tanks · Gold Medal 2025 · Pilots in Japan</div>
+                </div>
+                <div class="case-card">
+                    <div class="company-type">Animal Health / AgriTech</div>
+                    <h4>Natural livestock immunity booster</h4>
+                    <div class="description">Created a coconut-oil based multivitamin that reduces livestock mortality by 90%. Improved breeders' income by 41% while cutting medication costs. Now exporting to Brunei and Central Asia.</div>
+                    <div class="fact">90% survival rate · 162 breeders · Export to 3 countries</div>
+                </div>
+                <div class="case-card">
+                    <div class="company-type">AgriTech / Nanotechnology</div>
+                    <h4>Photosynthesis-enhancing nanospray</h4>
+                    <div class="description">University-spinout that developed a foliar spray increasing crop yield and disease resistance. Used by 3,500+ farmers across 4,500 hectares. Raised RM 6.18M seed extension and selected for Bill Gates-backed fellowship.</div>
+                    <div class="fact">3,500+ farmers · RM 6.18M raised · Global expansion</div>
+                </div>
+                <div class="case-card">
+                    <div class="company-type">AgriTech / AI & IoT</div>
+                    <h4>Smart poultry and energy management</h4>
+                    <div class="description">Integrated AI, IoT and satellite data to optimize farm operations. Pilots increased poultry profits by 22% and reduced mortality. Signed joint research with Japanese university and partnered with Lenovo Singapore.</div>
+                    <div class="fact">22% profit increase · JV with Japanese university · USTDA grant</div>
+                </div>
+                <div class="case-card">
+                    <div class="company-type">Robotics / F&B Automation</div>
+                    <h4>AI-powered robotic barista</h4>
+                    <div class="description">Developed a fully autonomous robot barista ecosystem serving 200 cups/hour. Deployed in offices, malls, transport hubs across 6 countries. Attracted investment from JR East and opened global R&D centre in Malaysia.</div>
+                    <div class="fact">200 cups/hour · RM 350M valuation · 6 countries</div>
+                </div>
+                <div class="case-card">
+                    <div class="company-type">IoT / Fleet Management</div>
+                    <h4>AI-driven fleet telematics</h4>
+                    <div class="description">Built a comprehensive fleet management platform combining GPS, IoT sensors, and video telematics. Collected 2.6B data points, served 1,600+ projects. Acquired by Indonesian fintech after GMP Indonesia.</div>
+                    <div class="fact">2.6B data points · Acquired · 130+ resellers</div>
+                </div>
+                <div class="case-card">
+                    <div class="company-type">IoT / Security Workforce</div>
+                    <h4>Smart security patrol system</h4>
+                    <div class="description">Digitized security guard operations with proprietary devices and command centre. Now serves 200k users, 5,000 sites, including national GLCs. Signed MoU with Japanese robotics firm for co-development.</div>
+                    <div class="fact">200k users · MoU with Japan · 15,000 security operators</div>
+                </div>
+                <div class="case-card">
+                    <div class="company-type">Robotics / Industrial Inspection</div>
+                    <h4>Drone-based confined space inspection</h4>
+                    <div class="description">Pioneered drone-assisted internal tank inspection in Malaysia, reducing human risk in oil & gas. Completed 250+ asset inspections with zero incidents. Partnered with Japanese drone and sensor manufacturers.</div>
+                    <div class="fact">200k+ safe hours · MoU with 2 Japanese firms · Petronas client</div>
+                </div>
+                <div class="case-card">
+                    <div class="company-type">EdTech / B2B SaaS</div>
+                    <h4>All-in-one management for learning centres</h4>
+                    <div class="description">Evolved from lesson marketplace to comprehensive SaaS for tuition centres. Now supports 2,700+ centres across 5 ASEAN countries, processing RM 320M in fees. Raised RM 8M from top VCs.</div>
+                    <div class="fact">2,700 centres · RM 8M raised · 5 countries</div>
+                </div>
+                <div class="case-card">
+                    <div class="company-type">5G / Telecom</div>
+                    <h4>Peer-to-peer bandwidth sharing</h4>
+                    <div class="description">Created app allowing users to share unused WiFi bandwidth, creating affordable access points. 85,000 hotspots across 32 countries, 100k downloads without marketing spend. Access to True Corporation in Thailand.</div>
+                    <div class="fact">85k hotspots · 32 countries · RM 1M revenue in 9 months</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FRAMEWORK SECTION (12 topics) -->
+        <section id="framework" class="container">
+            <h2>Technology commercialization blueprint</h2>
+            <p class="section-subhead">A structured approach to scaling your deep tech in Asia — from concept to market leader.</p>
+            <div class="framework-grid">
+                <div class="framework-card"><h4>1. Understanding Technology Commercialization</h4><ul><li>Introduction to technology commercialization</li><li>Importance for startups</li><li>Key concepts and terminology</li></ul></div>
+                <div class="framework-card"><h4>2. Identifying Market Opportunities</h4><ul><li>Market research strategies</li><li>Assessing demand and trends in Asia</li><li>Identifying niche markets</li></ul></div>
+                <div class="framework-card"><h4>3. Building a Strong Value Proposition</h4><ul><li>Crafting a compelling value proposition</li><li>Differentiating your product</li><li>Addressing pain points</li></ul></div>
+                <div class="framework-card"><h4>4. Intellectual Property Protection</h4><ul><li>Overview of IP rights</li><li>Importance for startups</li><li>Securing patents, trademarks, copyrights</li></ul></div>
+                <div class="framework-card"><h4>5. Developing a Go‑to‑Market Strategy</h4><ul><li>Creating a GTM strategy for Asia</li><li>Choosing distribution channels</li><li>Partnering with local businesses</li></ul></div>
+                <div class="framework-card"><h4>6. Market Entry Strategies</h4><ul><li>Entry modes: joint ventures, partnerships</li><li>Localization and adaptation</li><li>Regulatory compliance</li></ul></div>
+                <div class="framework-card"><h4>7. Accessing Funding in Asia</h4><ul><li>Overview of funding landscape</li><li>Venture capital opportunities</li><li>Government grants and incentives</li></ul></div>
+                <div class="framework-card"><h4>8. Preparing for Investor Pitch</h4><ul><li>Crafting an effective pitch deck</li><li>Tips for pitching to investors</li><li>Addressing concerns and objections</li></ul></div>
+                <div class="framework-card"><h4>9. Negotiating Funding Deals</h4><ul><li>Understanding term sheets</li><li>Negotiation strategies</li><li>Securing favorable terms</li></ul></div>
+                <div class="framework-card"><h4>10. Scaling Operations in Asia</h4><ul><li>Scaling strategies</li><li>Managing cultural/operational challenges</li><li>Building a scalable business model</li></ul></div>
+                <div class="framework-card"><h4>11. Measuring Success and Iterating</h4><ul><li>Key performance indicators (KPIs)</li><li>Analyzing feedback and iterating</li><li>Continuous improvement</li></ul></div>
+                <div class="framework-card"><h4>12. Case Studies and Success Stories</h4><ul><li>Real-world examples in Asia</li><li>Lessons learned from startups</li><li>Inspirational stories</li></ul></div>
+            </div>
+        </section>
+
+        <!-- LEAD MAGNET: free report with updated summary -->
+        <section id="report" class="container" style="padding-top:1rem; padding-bottom:1rem;">
+            <div class="lead-magnet">
+                <div class="lead-magnet-content">
+                    <h3>Free report: 7 steps to commercialize in Asia</h3>
+                    <p>Drawing insights from the GIX Impact Report: 50+ deep tech ventures, RM 60.8M value created, 12 international markets, and 118 innovators facilitated overseas. Covers IP strategy, funding, GTM, and partner selection.</p>
+                </div>
+                <div class="lead-form">
+                    <form onsubmit="event.preventDefault(); alert('Thank you! Check your inbox for the report. (demo)');">
+                        <input type="text" placeholder="Full name" required>
+                        <input type="email" placeholder="Business email" required>
+                        <input type="text" placeholder="Company">
+                        <button type="submit" class="btn-gold">Send me the report</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- WHAT'S NEXT -->
+        <section class="container">
+            <div style="background:var(--pure-white); padding:3rem; box-shadow:var(--shadow-card);">
+                <h2 style="margin-top:0;">What's next</h2>
+                <p class="section-subhead" style="margin-bottom:1.5rem;">Deepening impact through commercial projects, corporate partnerships, and co‑creation. We are seeking international partners to collaborate on real‑world deployments.</p>
+                <a href="#contact" class="btn-primary" style="background:var(--gold); border-color:var(--gold); color:var(--deep-navy);">Partner with us</a>
+            </div>
+        </section>
+
+        <!-- CONTACT (updated with mailto for HOW CAN WE HELP) -->
+        <section id="contact" class="container">
+            <div class="contact-form">
+                <h2 style="margin-top:0;">Ready to scale in Asia?</h2>
+                <p class="section-subhead" style="margin-bottom:2rem;">Tell us about your technology. A senior advisor will reach out within 24h.</p>
+                <form onsubmit="event.preventDefault();">
+                    <div class="two-col">
+                        <input type="text" placeholder="Full name" required>
+                        <input type="email" placeholder="Work email" required>
+                    </div>
+                    <input type="text" placeholder="Company / startup" style="width:100%; margin-bottom:1.2rem;">
+                    <textarea rows="4" placeholder="Your technology & target markets..." style="width:100%; margin-bottom:1.2rem;"></textarea>
+                    <!-- changed button to mailto -->
+                    <a href="mailto:karsin@mranti.my?subject=NextBlaze%20Asia%20Inquiry&body=Hello%2C%20I%27d%20like%20to%20discuss%20how%20you%20can%20help%20with%20our%20technology%20commercialization." class="btn-primary" style="display:inline-block; width:100%; text-align:center; text-decoration:none;">HOW CAN WE HELP</a>
+                </form>
+                <hr>
+                <div style="display:flex; justify-content:space-between; flex-wrap:wrap; color:var(--text-medium);">
+                    <span>✉ karsin@mranti.my</span>
+                    <span>📍 Kuala Lumpur</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- FINAL CTA -->
+        <div style="background:var(--deep-navy); color:white; text-align:center; padding:4rem 2rem;">
+            <h2 style="color:white;">Let's co‑create the future</h2>
+            <p style="font-size:1.4rem; max-width:700px; margin:0 auto 2.5rem; color:#b0d0e0;">We bridge innovators with markets, funding, and partners across Asia.</p>
+            <a href="#report" class="btn-gold" style="text-decoration:none; padding:1rem 3rem;">Get your free report</a>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <div><img src="http://www.nextblaze.asia/7yellow2bluebg.png" alt="NextBlaze Asia" style="height:50px;" onerror="this.style.display='none'; this.parentElement.innerHTML='<span style=\'color:white; font-weight:700; font-size:1.5rem;\'>NextBlaze<span style=\'color:var(--gold);\'>Asia</span></span>';"></div>
+            <div><strong>Offices</strong><br>Singapore · Tokyo · Seoul · Kuala Lumpur</div>
+            <div><strong>Contact</strong><br>karsin@mranti.my</div>
+        </div>
+        <div class="footer-copyright">© 2026 NextBlaze Asia — All rights reserved.</div>
+    </footer>
+
+    <script>
+        (function() {
+            const toggle = document.getElementById('menuToggle');
+            const nav = document.getElementById('navLinks');
+            if (toggle && nav) {
+                toggle.addEventListener('click', function() { nav.classList.toggle('show'); });
+                nav.querySelectorAll('a').forEach(link => link.addEventListener('click', ()=>{
+                    if (window.innerWidth <= 900) nav.classList.remove('show');
+                }));
+            }
+        })();
+    </script>
+</body>
+</html>
