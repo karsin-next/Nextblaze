@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>NextBlaze Asia · Commercialization Advisory</title>
+    <meta name="description" content="Free Asia Market Entry Scorecard. We help deep tech startups commercialize across Asia – funding, GTM, IP, and scaling.">
+    <!-- Google Fonts: premium serif for headlines, Inter for body -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --navy: #022f42;        /* logo background */
+            --gold: #ffd800;         /* logo accent */
+            --white: #ffffff;
+            --off-white: #faf9f5;    /* very light warm white, not grey */
+            --text-dark: #022f42;
+            --text-body: #1f3a4c;
+            --border-light: rgba(2, 47, 66, 0.12);
+            --shadow-card: 0 20px 40px -12px rgba(2, 47, 66, 0.12);
+            --shadow-hover: 0 30px 50px -20px rgba(255, 216, 0, 0.24);
+            --font-serif: 'Space Grotesk', 'Inter', sans-serif;  /* modern but premium */
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --transition: all 0.25s ease;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--off-white);
+            color: var(--text-body);
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        /* sticky header (navy) */
+        .sticky-header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background-color: var(--navy);
+            padding: 0.7rem 2rem;
+            border-bottom: 2px solid var(--gold);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo-block {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .logo-square {
+            background-color: var(--gold);
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--navy);
+            line-height: 1;
+        }
+        .logo-text {
+            font-weight: 600;
+            font-size: 1.5rem;
+            letter-spacing: -0.02em;
+            color: white;
+        }
+        .logo-text span {
+            color: var(--gold);
+            font-weight: 300;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            color: rgba(255,255,255,0.9);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            transition: var(--transition);
+            border-bottom: 2px solid transparent;
+            padding-bottom: 0.25rem;
+        }
+        .nav-links a:hover {
+            color: var(--gold);
+            border-bottom-color: var(--gold);
+        }
+
+        .btn-outline-light {
+            background: transparent;
+            border: 2px solid var(--gold);
+            color: var(--gold);
+            padding: 0.5rem 2rem;
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: var(--transition);
+            display: inline-block;
+        }
+        .btn-outline-light:hover {
+            background: var(--gold);
+            color: var(--navy);
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 2.2rem;
+            cursor: pointer;
+            color: var(--gold);
+        }
+
+        @media (max-width: 900px) {
+            .sticky-header { padding: 0.6rem 1.5rem; }
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: var(--navy);
+                flex-direction: column;
+                gap: 0;
+                padding: 2rem 0;
+                border-top: 2px solid var(--gold);
+            }
+            .nav-links.show { display: flex; }
+            .nav-links a {
+                padding: 1rem 2rem;
+                width: 100%;
+                text-align: center;
+                border-bottom: 1px solid rgba(255,216,0,0.2);
+            }
+            .nav-links a:last-child { border-bottom: none; }
+            .menu-toggle { display: block; }
+        }
+
+        /* containers */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+        }
+        @media (max-width: 640px) {
+            .container { padding: 3rem 1.5rem; }
+        }
+
+        h1, h2, h3 {
+            font-family: var(--font-serif);
+            font-weight: 600;
+            line-height: 1.2;
+            color: var(--navy);
+        }
+        h1 {
+            font-size: clamp(3rem, 8vw, 4.8rem);
+            letter-spacing: -0.02em;
+        }
+        h2 {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+        }
+        h2:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--gold);
+            margin-top: 0.75rem;
+        }
+        .section-subhead {
+            font-size: 1.2rem;
+            color: var(--text-body);
+            max-width: 780px;
+            margin-bottom: 3rem;
+            font-weight: 400;
+        }
+
+        /* buttons */
+        .btn-primary {
+            background: var(--navy);
+            color: white;
+            border: 2px solid var(--navy);
+            padding: 1rem 3rem;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            text-decoration: none;
+            display: inline-block;
+            transition: var(--transition);
+        }
+        .btn-primary:hover {
+            background: transparent;
+            color: var(--navy);
+        }
+        .btn-gold {
+            background: var(--gold);
+            color: var(--navy);
+            border: 2px solid var(--gold);
+            padding: 1rem 3rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            text-decoration: none;
+            display: inline-block;
+            transition: var(--transition);
+        }
+        .btn-gold:hover {
+            background: transparent;
+            color: var(--gold);
+        }
+
+        /* hero */
+        .hero {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3rem;
+            align-items: center;
+        }
+        .hero-content {
+            flex: 1 1 500px;
+        }
+        .hero-visual {
+            flex: 1 1 300px;
+            background: var(--navy);
+            height: 340px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            font-size: 2.2rem;
+            font-weight: 500;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+            padding: 2rem;
+        }
+        .hero-visual p {
+            font-size: 1.4rem;
+            margin-top: 1rem;
+            color: white;
+            font-weight: 300;
+        }
+        .hero-visual::after {
+            content: "▼";
+            font-size: 8rem;
+            opacity: 0.1;
+            color: var(--gold);
+            position: absolute;
+            bottom: -30px;
+            right: -20px;
+            transform: rotate(20deg);
+        }
+
+        /* stats */
+        .stats-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3rem;
+            background: var(--white);
+            padding: 3rem 4rem;
+            box-shadow: var(--shadow-card);
+            margin: 3rem 0;
+            border-left: 6px solid var(--gold);
+        }
+        .stat-item {
+            flex: 1 1 140px;
+        }
+        .stat-number {
+            font-size: 3.2rem;
+            font-weight: 600;
+            color: var(--navy);
+            line-height: 1;
+        }
+        .stat-label {
+            color: var(--text-body);
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.06em;
+            margin-top: 0.5rem;
+        }
+
+        /* problem / agitation */
+        .problem-block {
+            background: var(--white);
+            padding: 4rem;
+            box-shadow: var(--shadow-card);
+            border-right: 6px solid var(--gold);
+        }
+
+        /* solution grid (4 steps) */
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        .step-card {
+            background: var(--white);
+            padding: 2.5rem 2rem;
+            box-shadow: var(--shadow-card);
+            transition: var(--transition);
+            border-top: 4px solid transparent;
+        }
+        .step-card:hover {
+            border-top-color: var(--gold);
+            box-shadow: var(--shadow-hover);
+        }
+        .step-card h4 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--navy);
+        }
+        .step-tag {
+            color: var(--gold);
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        /* testimonial */
+        .testimonial-block {
+            background: var(--navy);
+            color: white;
+            padding: 4rem 4rem;
+            margin: 3rem 0;
+        }
+        .testimonial-block p {
+            font-size: 1.9rem;
+            font-weight: 300;
+            line-height: 1.4;
+            max-width: 900px;
+            margin: 0 auto 2rem;
+            color: rgba(255,255,255,0.9);
+        }
+        .testimonial-author {
+            color: var(--gold);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* lead magnet form */
+        .magnet-block {
+            background: var(--white);
+            padding: 4rem;
+            box-shadow: var(--shadow-card);
+            border: 2px solid var(--gold);
+            max-width: 900px;
+            margin: 4rem auto;
+        }
+        .form-group {
+            margin-bottom: 2rem;
+        }
+        input {
+            width: 100%;
+            padding: 1.2rem 1.8rem;
+            background: var(--off-white);
+            border: 1px solid var(--border-light);
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            transition: var(--transition);
+            border-bottom: 3px solid transparent;
+        }
+        input:focus {
+            outline: none;
+            background: white;
+            border-bottom-color: var(--gold);
+        }
+        .submit-btn {
+            background: var(--gold);
+            color: var(--navy);
+            border: none;
+            padding: 1.3rem 3rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            cursor: pointer;
+            width: 100%;
+            transition: var(--transition);
+            border: 2px solid var(--gold);
+        }
+        .submit-btn:hover {
+            background: transparent;
+            color: var(--gold);
+        }
+
+        /* trust clients (text only) */
+        .trust-strip {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 2rem;
+            padding: 3rem 0;
+            color: var(--navy);
+            font-weight: 600;
+            opacity: 0.7;
+            border-top: 1px solid var(--border-light);
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        /* footer */
+        .footer {
+            background: var(--navy);
+            color: #adb9c4;
+            padding: 4rem 2rem 2rem;
+        }
+        .footer-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 3rem;
+        }
+        .footer-logo {
+            background: var(--gold);
+            color: var(--navy);
+            font-weight: 700;
+            font-size: 1.8rem;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .footer-copyright {
+            text-align: center;
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid #1d4a63;
+        }
+        hr { border: 0; border-top: 1px solid var(--border-light); margin: 2rem 0; }
+
+        /* small decorative */
+        .highlight {
+            color: var(--gold);
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <header class="sticky-header">
+        <div class="nav-container">
+            <div class="logo-block">
+                <div class="logo-square">NB</div>
+                <div class="logo-text">NextBlaze<span>Asia</span></div>
+            </div>
+            <button class="menu-toggle" id="menuToggle">☰</button>
+            <nav class="nav-links" id="navLinks">
+                <a href="#solutions">Solutions</a>
+                <a href="#results">Results</a>
+                <a href="#insights">Insights</a>
+                <a href="#magnet">Free Scorecard</a>
+                <a href="#contact" class="btn-outline-light">Strategy Call</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- HERO with primary CTA (lead magnet tease) -->
+        <section class="container" style="padding-top: 2rem;">
+            <div class="hero">
+                <div class="hero-content">
+                    <span class="highlight" style="letter-spacing:0.3em; text-transform:uppercase;">Asia market entry specialists</span>
+                    <h1>From Lab to Market Leader in Asia</h1>
+                    <p style="font-size:1.3rem; margin: 1.5rem 0 2rem; color:var(--text-body);">We help deep tech startups commercialize across Asia’s most complex markets. <strong class="highlight">$420M+ raised</strong> for portfolio companies.</p>
+                    <div style="margin-bottom: 2rem;">
+                        <a href="#magnet" class="btn-gold" style="margin-right:1rem;">Get Free Scorecard</a>
+                        <a href="#solutions" class="btn-primary">See Methodology</a>
+                    </div>
+                    <!-- micro trust -->
+                    <div style="display:flex; gap:2rem; color:var(--navy); font-weight:500;">
+                        <span>37 ventures</span>
+                        <span>9 markets</span>
+                        <span>100% founder satisfaction</span>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <span>🌏</span>
+                    <p>Your gateway to Asia</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- STATS + TRUST (no grey) -->
+        <div class="container" style="padding-top:0;">
+            <div class="stats-row">
+                <div class="stat-item"><div class="stat-number">$420M+</div><div class="stat-label">Capital raised</div></div>
+                <div class="stat-item"><div class="stat-number">37</div><div class="stat-label">Portfolio ventures</div></div>
+                <div class="stat-item"><div class="stat-number">9</div><div class="stat-label">Asia markets</div></div>
+                <div class="stat-item"><div class="stat-number">12</div><div class="stat-label">Years average experience</div></div>
+            </div>
+        </div>
+
+        <!-- PROBLEM AGITATION (persuasive) -->
+        <section id="solutions" class="container">
+            <div class="problem-block">
+                <h2>The Asia Commercialization Gap</h2>
+                <p style="font-size:1.3rem; max-width:800px;">Most deep tech startups fail in Asia not because of technology, but because of market complexity. Fragmented regulations, cultural barriers, and misaligned investor expectations lead to costly delays.</p>
+                <p style="margin-top:2rem;">You need more than translation—you need a strategic partner who has already built the bridges.</p>
+            </div>
+        </section>
+
+        <!-- SOLUTION: The NextBlaze System (4 steps) -->
+        <section class="container">
+            <h2>Our Proven System</h2>
+            <div class="steps-grid">
+                <div class="step-card"><div class="step-tag">Step 01</div><h4>Discovery & Audit</h4><p>We assess your tech, IP, and market fit. You receive a free Asia Market Entry Scorecard (see below).</p></div>
+                <div class="step-card"><div class="step-tag">Step 02</div><h4>Strategy & Roadmap</h4><p>Tailored GTM, funding pathway, and partner identification – with clear milestones.</p></div>
+                <div class="step-card"><div class="step-tag">Step 03</div><h4>Execution & Access</h4><p>We introduce investors, corporate partners, and support negotiations.</p></div>
+                <div class="step-card"><div class="step-tag">Step 04</div><h4>Scale & Succeed</h4><p>Post-entry scaling, operational setup, and follow-on funding.</p></div>
+            </div>
+        </section>
+
+        <!-- SOCIAL PROOF: Testimonial + mini case study -->
+        <section class="container">
+            <div class="testimonial-block">
+                <p>“NextBlaze Asia reshaped our value proposition for Japan. We closed Series A with a top‑tier VC in six months — something we couldn’t have done alone.”</p>
+                <div class="testimonial-author">Dr. Ananya Lee, co‑founder NanoVax</div>
+            </div>
+            <!-- additional trust: client names (text only) -->
+            <div class="trust-strip">
+                <span>DBS</span>
+                <span>SGInnovate</span>
+                <span>A*STAR</span>
+                <span>Mitsui</span>
+                <span>Techsauce</span>
+            </div>
+        </section>
+
+        <!-- LEAD MAGNET: Free Asia Market Entry Scorecard -->
+        <section id="magnet" class="container">
+            <div class="magnet-block">
+                <h2 style="margin-top:0;">Free Asia Market Entry Scorecard</h2>
+                <p class="section-subhead" style="margin-bottom:2rem;">Answer 10 strategic questions and receive a personalized readiness assessment + actionable insights within 24 hours.</p>
+                <form onsubmit="event.preventDefault(); alert('Thank you! Your scorecard will be emailed shortly.');">
+                    <div class="form-group"><input type="text" placeholder="Full name" required></div>
+                    <div class="form-group"><input type="email" placeholder="Business email" required></div>
+                    <div class="form-group"><input type="text" placeholder="Company / venture" required></div>
+                    <div class="form-group"><input type="text" placeholder="Technology / sector (e.g. biotech, AI)"></div>
+                    <button type="submit" class="submit-btn">Get my free scorecard</button>
+                </form>
+                <p style="margin-top:1.5rem; font-size:0.9rem; color:var(--text-body);">We respect your data. No spam, ever.</p>
+            </div>
+        </section>
+
+        <!-- FINAL CTA: Book a consultation (bottom funnel) -->
+        <section id="contact" class="container" style="padding-top:0;">
+            <div style="background:var(--navy); color:white; padding:4rem; text-align:center;">
+                <h2 style="color:white; font-size:2.8rem;">Ready to scale in Asia?</h2>
+                <p style="font-size:1.3rem; max-width:700px; margin:1rem auto 2.5rem; color:#e0e9f0;">Book a 30‑min strategy audit with a senior advisor – no commitment.</p>
+                <a href="#" class="btn-gold" style="background:transparent; color:var(--gold); border-color:var(--gold);" onclick="alert('Demo: redirect to calendar.')">Book your free audit</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <div><div class="footer-logo">NB</div><p style="margin-top:1rem; max-width:250px;">NextBlaze Asia – strategic advisory for technology commercialization.</p></div>
+            <div><strong>Offices</strong><br>Singapore · Tokyo · Seoul</div>
+            <div><strong>Contact</strong><br>hello@nextblaze.asia<br>+65 6818 7923</div>
+        </div>
+        <div class="footer-copyright">© 2025 NextBlaze Asia Pte Ltd — all rights reserved.</div>
+    </footer>
+
+    <script>
+        // mobile menu toggle
+        (function() {
+            const toggle = document.getElementById('menuToggle');
+            const nav = document.getElementById('navLinks');
+            if (toggle && nav) {
+                toggle.addEventListener('click', function() { nav.classList.toggle('show'); });
+                nav.querySelectorAll('a').forEach(link => link.addEventListener('click', ()=>{
+                    if (window.innerWidth <= 900) nav.classList.remove('show');
+                }));
+            }
+        })();
+    </script>
+    <!-- analytics placeholder -->
+    <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date());</script>
+</body>
+</html>
