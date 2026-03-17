@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-    <title>NextBlaze Asia · Commercialization Advisory</title>
-    <meta name="description" content="Free Asia Market Entry Scorecard. We help deep tech startups commercialize across Asia – funding, GTM, IP, and scaling.">
-    <!-- Google Fonts: premium serif for headlines, Inter for body -->
+    <title>NextBlaze Asia | Technology Commercialization & Venture Building</title>
+    <meta name="description" content="NextBlaze Asia helps deep tech startups scale across Asia. Based on real impact: 60.8M value, 12 markets, 37 ventures. Free report inside.">
+    <!-- modern font Inter (premium) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -17,77 +17,61 @@
         }
 
         :root {
-            --navy: #022f42;        /* logo background */
-            --gold: #ffd800;         /* logo accent */
-            --white: #ffffff;
-            --off-white: #faf9f5;    /* very light warm white, not grey */
+            --deep-navy: #022f42;      /* logo background */
+            --gold: #ffd800;            /* logo accent */
+            --pure-white: #ffffff;
+            --off-white: #f2f6fa;       /* very light blue-white, no grey */
             --text-dark: #022f42;
-            --text-body: #1f3a4c;
+            --text-medium: #1e4a62;
             --border-light: rgba(2, 47, 66, 0.12);
-            --shadow-card: 0 20px 40px -12px rgba(2, 47, 66, 0.12);
-            --shadow-hover: 0 30px 50px -20px rgba(255, 216, 0, 0.24);
-            --font-serif: 'Space Grotesk', 'Inter', sans-serif;  /* modern but premium */
-            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            --transition: all 0.25s ease;
+            --shadow-card: 0 25px 45px -15px rgba(2, 47, 66, 0.15);
+            --shadow-hover: 0 35px 55px -18px rgba(255, 216, 0, 0.25);
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            --transition: all 0.3s ease;
         }
 
         body {
             font-family: var(--font-sans);
             background-color: var(--off-white);
-            color: var(--text-body);
+            color: var(--text-dark);
             line-height: 1.5;
             scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
         }
 
-        /* sticky header (navy) */
+        /* ----- sticky header (deep navy, gold border) ----- */
         .sticky-header {
             position: sticky;
             top: 0;
             z-index: 50;
-            background-color: var(--navy);
+            background-color: var(--deep-navy);
             padding: 0.7rem 2rem;
-            border-bottom: 2px solid var(--gold);
+            border-bottom: 3px solid var(--gold);
         }
-
         .nav-container {
-            max-width: 1400px;
+            max-width: 1280px;
             margin: 0 auto;
             display: flex;
             align-items: center;
             justify-content: space-between;
         }
-
-        .logo-block {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
+        .logo img {
+            height: 80px;          /* enlarged logo */
+            width: auto;
+            display: block;
         }
-        .logo-square {
-            background-color: var(--gold);
-            width: 48px;
-            height: 48px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 1.5rem;
-            color: var(--navy);
-            line-height: 1;
-        }
-        .logo-text {
-            font-weight: 600;
-            font-size: 1.5rem;
-            letter-spacing: -0.02em;
+        /* fallback text logo style (when image fails) */
+        .logo span.fallback-logo {
             color: white;
+            font-weight: 700;
+            font-size: 2.2rem;
         }
-        .logo-text span {
+        .logo span.fallback-logo span {
             color: var(--gold);
-            font-weight: 300;
         }
-
         .nav-links {
             display: flex;
-            gap: 2.5rem;
+            gap: 2.8rem;
             align-items: center;
         }
         .nav-links a {
@@ -99,13 +83,12 @@
             letter-spacing: 0.04em;
             transition: var(--transition);
             border-bottom: 2px solid transparent;
-            padding-bottom: 0.25rem;
+            padding-bottom: 0.2rem;
         }
         .nav-links a:hover {
             color: var(--gold);
             border-bottom-color: var(--gold);
         }
-
         .btn-outline-light {
             background: transparent;
             border: 2px solid var(--gold);
@@ -121,478 +104,399 @@
         }
         .btn-outline-light:hover {
             background: var(--gold);
-            color: var(--navy);
+            color: var(--deep-navy);
         }
-
         .menu-toggle {
             display: none;
             background: none;
             border: none;
-            font-size: 2.2rem;
+            font-size: 2.5rem;
             cursor: pointer;
             color: var(--gold);
         }
-
         @media (max-width: 900px) {
-            .sticky-header { padding: 0.6rem 1.5rem; }
+            .sticky-header { padding: 0.7rem 1.5rem; }
+            .logo img { height: 60px; }
             .nav-links {
                 display: none;
                 position: absolute;
-                top: 70px;
+                top: 85px;
                 left: 0;
                 width: 100%;
-                background: var(--navy);
+                background: var(--deep-navy);
                 flex-direction: column;
                 gap: 0;
                 padding: 2rem 0;
                 border-top: 2px solid var(--gold);
             }
             .nav-links.show { display: flex; }
-            .nav-links a {
-                padding: 1rem 2rem;
-                width: 100%;
-                text-align: center;
-                border-bottom: 1px solid rgba(255,216,0,0.2);
-            }
-            .nav-links a:last-child { border-bottom: none; }
+            .nav-links a { padding: 1rem 2rem; border-bottom: 1px solid rgba(255,216,0,0.2); }
             .menu-toggle { display: block; }
         }
 
         /* containers */
-        .container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 5rem 2rem;
-        }
-        @media (max-width: 640px) {
-            .container { padding: 3rem 1.5rem; }
-        }
+        .container { max-width: 1280px; margin: 0 auto; padding: 5rem 2rem; }
+        @media (max-width:640px){ .container{ padding:3rem 1.5rem; } }
 
-        h1, h2, h3 {
-            font-family: var(--font-serif);
-            font-weight: 600;
-            line-height: 1.2;
-            color: var(--navy);
-        }
-        h1 {
-            font-size: clamp(3rem, 8vw, 4.8rem);
-            letter-spacing: -0.02em;
-        }
-        h2 {
-            font-size: 2.8rem;
-            margin-bottom: 1.5rem;
-        }
+        h1, h2, h3 { font-weight: 700; line-height: 1.2; color: var(--deep-navy); }
+        h1 { font-size: clamp(3rem,7vw,4.8rem); letter-spacing: -0.02em; }
+        h2 { font-size: 3rem; margin-bottom: 1.5rem; }
         h2:after {
             content: '';
             display: block;
             width: 80px;
             height: 4px;
             background: var(--gold);
-            margin-top: 0.75rem;
+            margin-top: 0.8rem;
         }
-        .section-subhead {
-            font-size: 1.2rem;
-            color: var(--text-body);
-            max-width: 780px;
-            margin-bottom: 3rem;
-            font-weight: 400;
-        }
+        .section-subhead { font-size: 1.25rem; color: var(--text-medium); max-width: 800px; margin-bottom: 2.5rem; }
 
-        /* buttons */
-        .btn-primary {
-            background: var(--navy);
-            color: white;
-            border: 2px solid var(--navy);
-            padding: 1rem 3rem;
-            font-weight: 600;
-            letter-spacing: 0.06em;
-            text-transform: uppercase;
-            font-size: 0.9rem;
-            text-decoration: none;
-            display: inline-block;
-            transition: var(--transition);
-        }
-        .btn-primary:hover {
-            background: transparent;
-            color: var(--navy);
-        }
-        .btn-gold {
-            background: var(--gold);
-            color: var(--navy);
+        /* hero with video */
+        .hero-video {
+            width: 100%;
+            height: auto;
+            max-height: 500px;
+            object-fit: cover;
+            border-radius: 0;
+            box-shadow: var(--shadow-card);
             border: 2px solid var(--gold);
-            padding: 1rem 3rem;
-            font-weight: 700;
-            letter-spacing: 0.06em;
-            text-transform: uppercase;
-            font-size: 0.9rem;
-            text-decoration: none;
+        }
+        .hero-badge {
             display: inline-block;
-            transition: var(--transition);
-        }
-        .btn-gold:hover {
-            background: transparent;
-            color: var(--gold);
-        }
-
-        /* hero */
-        .hero {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 3rem;
-            align-items: center;
-        }
-        .hero-content {
-            flex: 1 1 500px;
-        }
-        .hero-visual {
-            flex: 1 1 300px;
-            background: var(--navy);
-            height: 340px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: var(--gold);
-            font-size: 2.2rem;
-            font-weight: 500;
-            position: relative;
-            overflow: hidden;
-            text-align: center;
-            padding: 2rem;
-        }
-        .hero-visual p {
-            font-size: 1.4rem;
-            margin-top: 1rem;
-            color: white;
-            font-weight: 300;
-        }
-        .hero-visual::after {
-            content: "▼";
-            font-size: 8rem;
-            opacity: 0.1;
-            color: var(--gold);
-            position: absolute;
-            bottom: -30px;
-            right: -20px;
-            transform: rotate(20deg);
+            background: var(--gold);
+            color: var(--deep-navy);
+            font-weight: 700;
+            padding: 0.3rem 1.2rem;
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.1em;
+            font-size: 0.8rem;
+            text-transform: uppercase;
         }
 
-        /* stats */
+        /* stats strip (from report) */
         .stats-row {
             display: flex;
             flex-wrap: wrap;
             gap: 3rem;
-            background: var(--white);
+            background: var(--pure-white);
             padding: 3rem 4rem;
             box-shadow: var(--shadow-card);
             margin: 3rem 0;
             border-left: 6px solid var(--gold);
         }
-        .stat-item {
-            flex: 1 1 140px;
-        }
-        .stat-number {
-            font-size: 3.2rem;
-            font-weight: 600;
-            color: var(--navy);
-            line-height: 1;
-        }
-        .stat-label {
-            color: var(--text-body);
-            text-transform: uppercase;
-            font-size: 0.85rem;
-            letter-spacing: 0.06em;
-            margin-top: 0.5rem;
-        }
+        .stat-item { flex: 1 1 140px; }
+        .stat-number { font-size: 3.2rem; font-weight: 600; color: var(--deep-navy); line-height: 1; }
+        .stat-label { color: var(--text-medium); text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.06em; }
 
-        /* problem / agitation */
-        .problem-block {
-            background: var(--white);
-            padding: 4rem;
-            box-shadow: var(--shadow-card);
-            border-right: 6px solid var(--gold);
-        }
-
-        /* solution grid (4 steps) */
-        .steps-grid {
+        /* case study cards (innovators from report) */
+        .case-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
             margin: 3rem 0;
         }
-        .step-card {
-            background: var(--white);
-            padding: 2.5rem 2rem;
+        .case-card {
+            background: var(--pure-white);
+            padding: 2rem 2rem 2.5rem;
             box-shadow: var(--shadow-card);
+            border-bottom: 4px solid transparent;
             transition: var(--transition);
-            border-top: 4px solid transparent;
         }
-        .step-card:hover {
-            border-top-color: var(--gold);
+        .case-card:hover {
+            border-bottom-color: var(--gold);
             box-shadow: var(--shadow-hover);
         }
-        .step-card h4 {
-            font-size: 1.8rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: var(--navy);
+        .case-card h4 { font-size: 1.6rem; margin-bottom: 1rem; color: var(--deep-navy); }
+        .case-card .quote {
+            font-style: italic;
+            color: var(--text-medium);
+            margin: 1rem 0;
+            font-size: 1rem;
+            border-left: 3px solid var(--gold);
+            padding-left: 1rem;
         }
-        .step-tag {
-            color: var(--gold);
-            font-weight: 700;
-            letter-spacing: 0.1em;
-            margin-bottom: 0.5rem;
+        .case-card .fact {
+            font-weight: 600;
+            color: var(--deep-navy);
+            font-size: 0.9rem;
             text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
 
-        /* testimonial */
-        .testimonial-block {
-            background: var(--navy);
+        /* partner logos (using clearbit where possible, with fallback) */
+        .partner-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2.5rem 3.5rem;
+            justify-content: center;
+            background: var(--pure-white);
+            padding: 3rem;
+            box-shadow: var(--shadow-card);
+            margin: 2rem 0;
+        }
+        .partner-logo {
+            height: 50px;
+            width: auto;
+            max-width: 150px;
+            object-fit: contain;
+            filter: brightness(0.9);
+            transition: var(--transition);
+        }
+        .partner-logo:hover {
+            filter: brightness(1) drop-shadow(0 0 5px var(--gold));
+        }
+        .partner-fallback {
+            font-weight: 600;
+            font-size: 1.2rem;
+            color: var(--deep-navy);
+            opacity: 0.9;
+            padding: 0.5rem 1rem;
+            background: #f0f0f0;
+            border-radius: 4px;
+        }
+
+        /* lead magnet */
+        .lead-magnet {
+            background: var(--deep-navy);
             color: white;
-            padding: 4rem 4rem;
+            padding: 4rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3rem;
+            align-items: center;
             margin: 3rem 0;
         }
-        .testimonial-block p {
-            font-size: 1.9rem;
-            font-weight: 300;
-            line-height: 1.4;
-            max-width: 900px;
-            margin: 0 auto 2rem;
-            color: rgba(255,255,255,0.9);
+        .lead-magnet-content { flex: 1 1 300px; }
+        .lead-magnet h3 { color: var(--gold); font-size: 2.2rem; margin-bottom: 1rem; }
+        .lead-form {
+            flex: 1 1 300px;
+            background: white;
+            padding: 2.5rem;
         }
-        .testimonial-author {
-            color: var(--gold);
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-        }
-
-        /* lead magnet form */
-        .magnet-block {
-            background: var(--white);
-            padding: 4rem;
-            box-shadow: var(--shadow-card);
-            border: 2px solid var(--gold);
-            max-width: 900px;
-            margin: 4rem auto;
-        }
-        .form-group {
-            margin-bottom: 2rem;
-        }
-        input {
+        .lead-form input {
             width: 100%;
-            padding: 1.2rem 1.8rem;
-            background: var(--off-white);
+            padding: 1rem;
+            margin-bottom: 1.2rem;
             border: 1px solid var(--border-light);
             font-family: var(--font-sans);
-            font-size: 1rem;
-            transition: var(--transition);
+            background: var(--off-white);
             border-bottom: 3px solid transparent;
         }
-        input:focus {
-            outline: none;
-            background: white;
-            border-bottom-color: var(--gold);
-        }
-        .submit-btn {
+        .lead-form input:focus { outline: none; border-bottom-color: var(--gold); }
+        .btn-gold {
             background: var(--gold);
-            color: var(--navy);
+            color: var(--deep-navy);
             border: none;
-            padding: 1.3rem 3rem;
+            padding: 1rem 2rem;
             font-weight: 700;
-            letter-spacing: 0.1em;
             text-transform: uppercase;
-            cursor: pointer;
+            letter-spacing: 0.1em;
             width: 100%;
+            cursor: pointer;
             transition: var(--transition);
             border: 2px solid var(--gold);
         }
-        .submit-btn:hover {
-            background: transparent;
-            color: var(--gold);
-        }
+        .btn-gold:hover { background: transparent; color: var(--gold); }
 
-        /* trust clients (text only) */
-        .trust-strip {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            gap: 2rem;
-            padding: 3rem 0;
-            color: var(--navy);
+        .btn-primary {
+            background: var(--deep-navy);
+            color: white;
+            border: 2px solid var(--deep-navy);
+            padding: 1.1rem 3rem;
             font-weight: 600;
-            opacity: 0.7;
-            border-top: 1px solid var(--border-light);
-            border-bottom: 1px solid var(--border-light);
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            text-decoration: none;
+            display: inline-block;
+            transition: var(--transition);
         }
+        .btn-primary:hover { background: transparent; color: var(--deep-navy); }
 
-        /* footer */
         .footer {
-            background: var(--navy);
-            color: #adb9c4;
-            padding: 4rem 2rem 2rem;
+            background: var(--deep-navy);
+            color: #b0d0e0;
+            padding: 3rem 2rem 2rem;
+            border-top: 3px solid var(--gold);
         }
-        .footer-inner {
-            max-width: 1280px;
-            margin: 0 auto;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            gap: 3rem;
-        }
-        .footer-logo {
-            background: var(--gold);
-            color: var(--navy);
-            font-weight: 700;
-            font-size: 1.8rem;
-            width: 60px;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .footer-copyright {
-            text-align: center;
-            margin-top: 4rem;
-            padding-top: 2rem;
-            border-top: 1px solid #1d4a63;
-        }
-        hr { border: 0; border-top: 1px solid var(--border-light); margin: 2rem 0; }
+        .footer-inner { max-width: 1280px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 3rem; }
+        .footer-copyright { text-align: center; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #1b4f68; }
 
-        /* small decorative */
-        .highlight {
-            color: var(--gold);
-            font-weight: 600;
-        }
+        hr { border: 0; border-top: 1px solid var(--border-light); margin: 2rem 0; }
     </style>
 </head>
 <body>
     <header class="sticky-header">
         <div class="nav-container">
-            <div class="logo-block">
-                <div class="logo-square">NB</div>
-                <div class="logo-text">NextBlaze<span>Asia</span></div>
+            <div class="logo">
+                <!-- enlarged logo with fallback text -->
+                <img src="http://www.nextblaze.asia/7yellow2bluebg.png" alt="NextBlaze Asia" onerror="this.onerror=null; this.style.display='none'; this.parentElement.innerHTML='<span class=\'fallback-logo\'>NextBlaze<span>Asia</span></span>';">
             </div>
             <button class="menu-toggle" id="menuToggle">☰</button>
             <nav class="nav-links" id="navLinks">
-                <a href="#solutions">Solutions</a>
-                <a href="#results">Results</a>
-                <a href="#insights">Insights</a>
-                <a href="#magnet">Free Scorecard</a>
-                <a href="#contact" class="btn-outline-light">Strategy Call</a>
+                <a href="#home">Home</a>
+                <a href="#impact">Impact</a>
+                <a href="#cases">Innovators</a>
+                <a href="#partners">Partners</a>
+                <a href="#report">Free report</a>
+                <a href="#contact" class="btn-outline-light">Book consult</a>
             </nav>
         </div>
     </header>
 
     <main>
-        <!-- HERO with primary CTA (lead magnet tease) -->
-        <section class="container" style="padding-top: 2rem;">
-            <div class="hero">
-                <div class="hero-content">
-                    <span class="highlight" style="letter-spacing:0.3em; text-transform:uppercase;">Asia market entry specialists</span>
-                    <h1>From Lab to Market Leader in Asia</h1>
-                    <p style="font-size:1.3rem; margin: 1.5rem 0 2rem; color:var(--text-body);">We help deep tech startups commercialize across Asia’s most complex markets. <strong class="highlight">$420M+ raised</strong> for portfolio companies.</p>
-                    <div style="margin-bottom: 2rem;">
-                        <a href="#magnet" class="btn-gold" style="margin-right:1rem;">Get Free Scorecard</a>
-                        <a href="#solutions" class="btn-primary">See Methodology</a>
-                    </div>
-                    <!-- micro trust -->
-                    <div style="display:flex; gap:2rem; color:var(--navy); font-weight:500;">
-                        <span>37 ventures</span>
-                        <span>9 markets</span>
-                        <span>100% founder satisfaction</span>
-                    </div>
+        <!-- HERO with video -->
+        <section id="home" class="container" style="padding-top: 2rem;">
+            <div class="hero-badge">TECHNOLOGY COMMERCIALIZATION IN ASIA</div>
+            <div style="display: flex; flex-wrap: wrap; gap: 3rem; align-items: center;">
+                <div style="flex:1 1 400px;">
+                    <!-- updated headline -->
+                    <h1>Scale your deep tech across Asia</h1>
+                    <p style="font-size:1.3rem; color:var(--text-medium); margin:1.5rem 0;">We turn deep tech into cross‑border success — backed by <strong>RM 60.8M value</strong> created and <strong>37 portfolio ventures</strong>.</p>
+                    <!-- CTA changed to GET FREE REPORT -->
+                    <a href="#report" class="btn-primary" style="margin-right:1rem;">GET FREE REPORT</a>
+                    <a href="#contact" class="btn-primary" style="background:transparent; color:var(--deep-navy);">Book consultation</a>
                 </div>
-                <div class="hero-visual">
-                    <span>🌏</span>
-                    <p>Your gateway to Asia</p>
+                <div style="flex:1 1 400px;">
+                    <!-- video from provided URL -->
+                    <video class="hero-video" controls poster="https://placehold.co/800x450/022f42/ffd800?text=NextBlaze+Asia">
+                        <source src="http://www.nextblaze.asia/Make-an-impact-with-energy-efficiency.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
                 </div>
             </div>
         </section>
 
-        <!-- STATS + TRUST (no grey) -->
-        <div class="container" style="padding-top:0;">
+        <!-- IMPACT SNAPSHOT (cleaned from GMP/VentureX mentions) -->
+        <section id="impact" class="container">
+            <h2>Impact snapshot</h2>
             <div class="stats-row">
-                <div class="stat-item"><div class="stat-number">$420M+</div><div class="stat-label">Capital raised</div></div>
-                <div class="stat-item"><div class="stat-number">37</div><div class="stat-label">Portfolio ventures</div></div>
-                <div class="stat-item"><div class="stat-number">9</div><div class="stat-label">Asia markets</div></div>
-                <div class="stat-item"><div class="stat-number">12</div><div class="stat-label">Years average experience</div></div>
+                <div class="stat-item"><div class="stat-number">RM 60.8M</div><div class="stat-label">Value creation</div></div>
+                <div class="stat-item"><div class="stat-number">12</div><div class="stat-label">International markets</div></div>
+                <div class="stat-item"><div class="stat-number">118</div><div class="stat-label">Innovators facilitated overseas</div></div>
+                <div class="stat-item"><div class="stat-number">25</div><div class="stat-label">Global companies landed</div></div>
             </div>
-        </div>
-
-        <!-- PROBLEM AGITATION (persuasive) -->
-        <section id="solutions" class="container">
-            <div class="problem-block">
-                <h2>The Asia Commercialization Gap</h2>
-                <p style="font-size:1.3rem; max-width:800px;">Most deep tech startups fail in Asia not because of technology, but because of market complexity. Fragmented regulations, cultural barriers, and misaligned investor expectations lead to costly delays.</p>
-                <p style="margin-top:2rem;">You need more than translation—you need a strategic partner who has already built the bridges.</p>
+            <div style="display:flex; flex-wrap:wrap; gap:2rem; justify-content:space-between; background:var(--pure-white); padding:2rem 3rem; box-shadow:var(--shadow-card);">
+                <span><strong>155</strong> international innovators</span>
+                <span><strong>16</strong> expansion programmes</span>
+                <span><strong>9</strong> Asian markets</span>
             </div>
         </section>
 
-        <!-- SOLUTION: The NextBlaze System (4 steps) -->
+        <!-- INNOVATOR CASE STUDIES (from report, 10 highlighted) -->
+        <section id="cases" class="container">
+            <h2>Innovators we accelerated</h2>
+            <p class="section-subhead">Real stories from agritech, robotics, SaaS — across Asia and beyond.</p>
+            <div class="case-grid">
+                <!-- ATOZ Carbon Cycle -->
+                <div class="case-card"><h4>ATOZ Carbon Cycle</h4><div class="quote">"Turning real friendships into real collaborators."</div><div class="fact">700 MACS tanks · Gold Medal UPM 2025</div></div>
+                <!-- Dunita International -->
+                <div class="case-card"><h4>Dunita International</h4><div class="quote">"9 out of 10 affected livestock saved."</div><div class="fact">162 breeders · 41% income ↑ · Export to Brunei, Central Asia</div></div>
+                <!-- Qarbotech -->
+                <div class="case-card"><h4>Qarbotech</h4><div class="quote">"Helping plants be more resilient."</div><div class="fact">3,500+ farmers · RM 1M revenue (2024) · RM 6.18M seed extension</div></div>
+                <!-- Solnovation Analytics -->
+                <div class="case-card"><h4>Solnovation Analytics</h4><div class="quote">"Technology as a pathway to food security."</div><div class="fact">22% profit ↑ poultry · JV with Yamagata University</div></div>
+                <!-- Sensory AI -->
+                <div class="case-card"><h4>Sensory AI</h4><div class="quote">"Ella the robot barista – 200 cups/hour."</div><div class="fact">RM 350M valuation · JR East · Global R&D centre in Malaysia</div></div>
+                <!-- GPS Fleet -->
+                <div class="case-card"><h4>GPS Fleet</h4><div class="quote">"Helping SMEs manage transport."</div><div class="fact">2.6B data points · acquired by Bayapay</div></div>
+                <!-- TrackerHero -->
+                <div class="case-card"><h4>TrackerHero</h4><div class="quote">"Digitising security guard patrols."</div><div class="fact">200k users · MoU with UGO Japan · IPO ambitions</div></div>
+                <!-- Beyond Horizon -->
+                <div class="case-card"><h4>Beyond Horizon</h4><div class="quote">"Drones for dangerous environments."</div><div class="fact">200k+ safe hours · MoU Liberaware</div></div>
+                <!-- My AOne Learning -->
+                <div class="case-card"><h4>My AOne Learning</h4><div class="quote">"Digitising learning centres."</div><div class="fact">2,700 centres · RM 8M raised · 500 Global</div></div>
+                <!-- Simplify Networks -->
+                <div class="case-card"><h4>Simplify Networks</h4><div class="quote">"Share unused internet bandwidth."</div><div class="fact">85k hotspots · 32 countries · True Corporation access</div></div>
+            </div>
+        </section>
+
+        <!-- PARTNERS (logos from Clearbit, with fallback) -->
+        <section id="partners" class="container">
+            <h2>Strategic partners</h2>
+            <div class="partner-grid">
+                <!-- Using Clearbit where possible; fallback to styled text -->
+                <img class="partner-logo" src="https://logo.clearbit.com/leaveanest.com" alt="Leave a Nest" onerror="this.onerror=null; this.style.display='none'; this.insertAdjacentHTML('afterend', '<span class=\'partner-fallback\'>Leave a Nest</span>');">
+                <img class="partner-logo" src="https://logo.clearbit.com/tusstar.com" alt="TusStar" onerror="this.onerror=null; this.style.display='none'; this.insertAdjacentHTML('afterend', '<span class=\'partner-fallback\'>TusStar</span>');">
+                <img class="partner-logo" src="https://logo.clearbit.com/truedigitalpark.com" alt="True Digital Park" onerror="this.onerror=null; this.style.display='none'; this.insertAdjacentHTML('afterend', '<span class=\'partner-fallback\'>True Digital Park</span>');">
+                <img class="partner-logo" src="https://logo.clearbit.com/ntu.edu.sg" alt="Nanyang Tech Univ" onerror="this.onerror=null; this.style.display='none'; this.insertAdjacentHTML('afterend', '<span class=\'partner-fallback\'>Nanyang Tech Univ</span>');">
+                <img class="partner-logo" src="https://logo.clearbit.com/start2group.com" alt="Start2 Group" onerror="this.onerror=null; this.style.display='none'; this.insertAdjacentHTML('afterend', '<span class=\'partner-fallback\'>Start2 Group</span>');">
+                <img class="partner-logo" src="https://logo.clearbit.com/usmarketaccess.com" alt="US Market Access" onerror="this.onerror=null; this.style.display='none'; this.insertAdjacentHTML('afterend', '<span class=\'partner-fallback\'>US Market Access</span>');">
+                <img class="partner-logo" src="https://logo.clearbit.com/undp.org" alt="UNDP" onerror="this.onerror=null; this.style.display='none'; this.insertAdjacentHTML('afterend', '<span class=\'partner-fallback\'>UNDP</span>');">
+                <img class="partner-logo" src="https://logo.clearbit.com/cradle.com.my" alt="Cradle Fund" onerror="this.onerror=null; this.style.display='none'; this.insertAdjacentHTML('afterend', '<span class=\'partner-fallback\'>Cradle Fund</span>');">
+                <img class="partner-logo" src="https://logo.clearbit.com/iumw.edu.my" alt="IUMW" onerror="this.onerror=null; this.style.display='none'; this.insertAdjacentHTML('afterend', '<span class=\'partner-fallback\'>IUMW</span>');">
+                <img class="partner-logo" src="https://logo.clearbit.com/startupterrace.tw" alt="Startup Terrace" onerror="this.onerror=null; this.style.display='none'; this.insertAdjacentHTML('afterend', '<span class=\'partner-fallback\'>Startup Terrace</span>');">
+            </div>
+        </section>
+
+        <!-- LEAD MAGNET: free report (was guide) -->
+        <section id="report" class="container" style="padding-top:2rem;">
+            <div class="lead-magnet">
+                <div class="lead-magnet-content">
+                    <h3>Free report: 7 steps to commercialize in Asia</h3>
+                    <p>Based on 50+ case studies (ATOZ, Qarbotech, Sensory AI…) – IP, funding, GTM, and partner selection.</p>
+                </div>
+                <div class="lead-form">
+                    <form onsubmit="event.preventDefault(); alert('Thank you! Check your inbox for the report. (demo)');">
+                        <input type="text" placeholder="Full name" required>
+                        <input type="email" placeholder="Business email" required>
+                        <input type="text" placeholder="Company">
+                        <button type="submit" class="btn-gold">Send me the report</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- WHAT'S NEXT (removed GIX) -->
         <section class="container">
-            <h2>Our Proven System</h2>
-            <div class="steps-grid">
-                <div class="step-card"><div class="step-tag">Step 01</div><h4>Discovery & Audit</h4><p>We assess your tech, IP, and market fit. You receive a free Asia Market Entry Scorecard (see below).</p></div>
-                <div class="step-card"><div class="step-tag">Step 02</div><h4>Strategy & Roadmap</h4><p>Tailored GTM, funding pathway, and partner identification – with clear milestones.</p></div>
-                <div class="step-card"><div class="step-tag">Step 03</div><h4>Execution & Access</h4><p>We introduce investors, corporate partners, and support negotiations.</p></div>
-                <div class="step-card"><div class="step-tag">Step 04</div><h4>Scale & Succeed</h4><p>Post-entry scaling, operational setup, and follow-on funding.</p></div>
+            <div style="background:var(--pure-white); padding:4rem; box-shadow:var(--shadow-card);">
+                <h2 style="margin-top:0;">What's next</h2>
+                <p class="section-subhead">Deepening impact through commercial projects, corporate partnerships, and co‑creation. We are seeking international partners to collaborate on real‑world deployments.</p>
+                <a href="#contact" class="btn-primary" style="background:var(--gold); border-color:var(--gold); color:var(--deep-navy);">Partner with us</a>
             </div>
         </section>
 
-        <!-- SOCIAL PROOF: Testimonial + mini case study -->
-        <section class="container">
-            <div class="testimonial-block">
-                <p>“NextBlaze Asia reshaped our value proposition for Japan. We closed Series A with a top‑tier VC in six months — something we couldn’t have done alone.”</p>
-                <div class="testimonial-author">Dr. Ananya Lee, co‑founder NanoVax</div>
-            </div>
-            <!-- additional trust: client names (text only) -->
-            <div class="trust-strip">
-                <span>DBS</span>
-                <span>SGInnovate</span>
-                <span>A*STAR</span>
-                <span>Mitsui</span>
-                <span>Techsauce</span>
-            </div>
-        </section>
-
-        <!-- LEAD MAGNET: Free Asia Market Entry Scorecard -->
-        <section id="magnet" class="container">
-            <div class="magnet-block">
-                <h2 style="margin-top:0;">Free Asia Market Entry Scorecard</h2>
-                <p class="section-subhead" style="margin-bottom:2rem;">Answer 10 strategic questions and receive a personalized readiness assessment + actionable insights within 24 hours.</p>
-                <form onsubmit="event.preventDefault(); alert('Thank you! Your scorecard will be emailed shortly.');">
-                    <div class="form-group"><input type="text" placeholder="Full name" required></div>
-                    <div class="form-group"><input type="email" placeholder="Business email" required></div>
-                    <div class="form-group"><input type="text" placeholder="Company / venture" required></div>
-                    <div class="form-group"><input type="text" placeholder="Technology / sector (e.g. biotech, AI)"></div>
-                    <button type="submit" class="submit-btn">Get my free scorecard</button>
+        <!-- CONTACT (removed phone and MRANTI reference) -->
+        <section id="contact" class="container">
+            <div style="background:var(--pure-white); padding:4rem; box-shadow:var(--shadow-card);">
+                <h2 style="margin-top:0;">Ready to scale in Asia?</h2>
+                <p class="section-subhead">Tell us about your technology. A senior advisor will reach out within 24h.</p>
+                <form onsubmit="event.preventDefault(); alert('Thank you. We will contact you shortly. (demo)');">
+                    <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.5rem;">
+                        <input type="text" placeholder="Full name" required>
+                        <input type="email" placeholder="Work email" required>
+                    </div>
+                    <input type="text" placeholder="Company / startup" style="width:100%; margin:1.5rem 0;">
+                    <textarea rows="4" placeholder="Your technology & target markets..." style="width:100%; margin-bottom:1.5rem;"></textarea>
+                    <button type="submit" class="btn-primary" style="width:100%;">Book free exploration call</button>
                 </form>
-                <p style="margin-top:1.5rem; font-size:0.9rem; color:var(--text-body);">We respect your data. No spam, ever.</p>
+                <hr>
+                <div style="display:flex; justify-content:space-between; flex-wrap:wrap; color:var(--text-medium);">
+                    <span>✉ hello@nextblaze.asia</span>
+                    <span>📍 Kuala Lumpur</span>
+                </div>
             </div>
         </section>
 
-        <!-- FINAL CTA: Book a consultation (bottom funnel) -->
-        <section id="contact" class="container" style="padding-top:0;">
-            <div style="background:var(--navy); color:white; padding:4rem; text-align:center;">
-                <h2 style="color:white; font-size:2.8rem;">Ready to scale in Asia?</h2>
-                <p style="font-size:1.3rem; max-width:700px; margin:1rem auto 2.5rem; color:#e0e9f0;">Book a 30‑min strategy audit with a senior advisor – no commitment.</p>
-                <a href="#" class="btn-gold" style="background:transparent; color:var(--gold); border-color:var(--gold);" onclick="alert('Demo: redirect to calendar.')">Book your free audit</a>
-            </div>
-        </section>
+        <!-- FINAL CTA -->
+        <div style="background:var(--deep-navy); color:white; text-align:center; padding:5rem 2rem;">
+            <h2 style="color:white;">Let's co‑create the future</h2>
+            <p style="font-size:1.4rem; max-width:700px; margin:0 auto 2.5rem; color:#b0d0e0;">We bridge innovators with markets, funding, and partners across Asia.</p>
+            <a href="#report" class="btn-gold" style="text-decoration:none; padding:1rem 3rem;">Get your free report</a>
+        </div>
     </main>
 
     <footer class="footer">
         <div class="footer-inner">
-            <div><div class="footer-logo">NB</div><p style="margin-top:1rem; max-width:250px;">NextBlaze Asia – strategic advisory for technology commercialization.</p></div>
-            <div><strong>Offices</strong><br>Singapore · Tokyo · Seoul</div>
-            <div><strong>Contact</strong><br>hello@nextblaze.asia<br>+65 6818 7923</div>
+            <div><img src="http://www.nextblaze.asia/7yellow2bluebg.png" alt="NextBlaze Asia" style="height:50px;" onerror="this.style.display='none'; this.parentElement.innerHTML='<span style=\'color:white; font-weight:700; font-size:1.5rem;\'>NextBlaze<span style=\'color:var(--gold);\'>Asia</span></span>';"></div>
+            <div><strong>Offices</strong><br>Singapore · Tokyo · Seoul · Kuala Lumpur</div>
+            <div><strong>Contact</strong><br>hello@nextblaze.asia</div>
         </div>
-        <div class="footer-copyright">© 2025 NextBlaze Asia Pte Ltd — all rights reserved.</div>
+        <!-- copyright updated to 2026 -->
+        <div class="footer-copyright">© 2026 NextBlaze Asia — All rights reserved.</div>
     </footer>
 
     <script>
-        // mobile menu toggle
         (function() {
             const toggle = document.getElementById('menuToggle');
             const nav = document.getElementById('navLinks');
@@ -604,7 +508,5 @@
             }
         })();
     </script>
-    <!-- analytics placeholder -->
-    <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date());</script>
 </body>
 </html>
